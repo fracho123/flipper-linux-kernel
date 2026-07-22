@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config AIC8800_USB
+	tristate "AICSemi AIC8800 USB support"
+	depends on USB
+	depends on CFG80211
+	select FW_LOADER
+	help
+	  This driver supports USB variants of the AICSemi AIC8800 family,
+	  including the AIC8800D80 used on the Radxa ROCK 4D.
+
+	  Two modules are built: aic_load_fw loads the device firmware and
+	  aic8800_fdrv provides the cfg80211 network interface.

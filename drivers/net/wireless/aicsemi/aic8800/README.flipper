@@ -1,0 +1,25 @@
+AICSemi AIC8800 vendor driver
+================================
+
+Source: https://github.com/radxa-pkg/aic8800
+Release: 5.0+git20260123.5f7be68d-7
+Commit: 6e07604
+
+This directory contains the USB Wi-Fi portions of Radxa's AIC8800 package:
+
+  src/USB/driver_fw/drivers/aic8800/aic_load_fw
+  src/USB/driver_fw/drivers/aic8800/aic8800_fdrv
+
+Before import, every patch listed in Radxa's debian/patches/series was applied
+in release order. Legacy line endings and trailing whitespace were normalized.
+The resulting source was then integrated with the kernel's Kconfig and Kbuild
+files; DKMS and Bluetooth driver packaging were not imported.
+
+Radxa's debian/copyright declares src/* as GPL-2 and declares changes under
+debian/patches/* to have the same license as the source they modify.
+
+Flipper-specific changes after flattening:
+
+  - Replaced standalone/DKMS Makefiles with in-tree Kbuild integration.
+  - Added Linux 7.2 cfg80211 remain-on-channel compatibility.
+  - Replaced removed or unsafe string operations used by Linux 7.2 builds.
