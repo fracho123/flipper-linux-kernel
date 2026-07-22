@@ -15,8 +15,18 @@ in release order. Legacy line endings and trailing whitespace were normalized.
 The resulting source was then integrated with the kernel's Kconfig and Kbuild
 files; DKMS and Bluetooth driver packaging were not imported.
 
-Radxa's debian/copyright declares src/* as GPL-2 and declares changes under
-debian/patches/* to have the same license as the source they modify.
+Licensing and provenance
+------------------------
+
+COPYRIGHT.radxa.original is a byte-for-byte copy of Radxa's
+debian/copyright. Its Files patterns refer to paths in Radxa's original
+package, not to paths in this kernel tree.
+
+The imported driver directories originated below src/USB/driver_fw and are
+therefore covered by the original src/* paragraph, which Radxa declares as
+GPL-2. Changes flattened from debian/patches/* are declared by Radxa to have
+the same license as the source they modify. This records Radxa's package
+metadata and does not claim that Radxa authored every imported vendor file.
 
 Flipper-specific changes after flattening:
 
