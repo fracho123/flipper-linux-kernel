@@ -38,14 +38,6 @@
 		};
 	};
 
-	rfkill {
-		compatible = "rfkill-gpio";
-		pinctrl-names = "default";
-		pinctrl-0 = <&wifi_en_h>;
-		radio-type = "wlan";
-		shutdown-gpios = <&gpio2 RK_PD1 GPIO_ACTIVE_HIGH>;
-	};
-
 	fan: pwm-fan {
 		compatible = "pwm-fan";
 		cooling-levels = <0 180 205 230 255>;
@@ -785,6 +777,15 @@
 	};
 };
 
+&gpio2 {
+	wifi-enable-hog {
+		gpio-hog;
+		gpios = <RK_PD1 GPIO_ACTIVE_HIGH>;
+		line-name = "wifi-enable";
+		output-high;
+	};
+};
+
 &mdio0 {
 	rgmii_phy0: ethernet-phy@1 {
 		compatible = "ethernet-phy-id001c.c916";
@@ -895,9 +896,6 @@
 	wifi {
 		usb_wifi_pwr: usb-wifi-pwr {
 			rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_down>;
-		};
-		wifi_en_h: wifi-en-h {
-			rockchip,pins = <2 RK_PD1 RK_FUNC_GPIO &pcfg_pull_down>;
 		};
 	};
 };
