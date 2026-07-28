@@ -357,7 +357,7 @@ struct ieee80211_regdomain *getRegdomainFromRwnxDB(struct wiphy *wiphy,
 
 	idx = 0;
 
-	while (reg_regdb[idx] && idx < reg_regdb_size){
+	while (idx < reg_regdb_size && reg_regdb[idx]) {
 		if((reg_regdb[idx]->alpha2[0] == alpha2[0]) &&
 			(reg_regdb[idx]->alpha2[1] == alpha2[1])){
 			memcpy(country_code, alpha2, 2);
