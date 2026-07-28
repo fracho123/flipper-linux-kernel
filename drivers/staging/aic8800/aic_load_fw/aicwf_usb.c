@@ -1707,11 +1707,13 @@ static int aicwf_usb_probe(struct usb_interface *intf, const struct usb_device_i
 		goto out_free_bus;
 	}
 
-    if (system_config(usb_dev)) {
+    ret = system_config(usb_dev);
+    if (ret) {
         goto out_free_bus;
     }
 
-    if (aicfw_download_fw(usb_dev)){
+    ret = aicfw_download_fw(usb_dev);
+    if (ret) {
         goto out_free_bus;
     }
 
