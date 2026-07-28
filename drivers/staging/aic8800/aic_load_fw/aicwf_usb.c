@@ -1799,11 +1799,15 @@ static struct usb_driver aicwf_usbdrvr = {
     .disable_hub_initiated_lpm = 1,
 };
 
-void aicwf_usb_register(void)
+int aicwf_usb_register(void)
 {
-    if (usb_register(&aicwf_usbdrvr) < 0) {
-        usb_err("usb_register failed\n");
-    }
+    int ret;
+
+    ret = usb_register(&aicwf_usbdrvr);
+    if (ret)
+        usb_err("usb_register failed: %d\n", ret);
+
+    return ret;
 }
 
 void aicwf_usb_exit(void)
